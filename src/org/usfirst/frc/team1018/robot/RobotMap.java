@@ -1,5 +1,6 @@
 package org.usfirst.frc.team1018.robot;
 
+import edu.wpi.first.wpilibj.TalonSRX;
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -7,13 +8,26 @@ package org.usfirst.frc.team1018.robot;
  * floating around.
  */
 public class RobotMap {
-	// For example to map the left and right motors, you could define the
-	// following variables to use with your drivetrain subsystem.
-	// public static int leftMotor = 1;
-	// public static int rightMotor = 2;
-
-	// If you are using multiple modules, make sure to define both the port
-	// number and the module. For example you with a rangefinder:
-	// public static int rangefinderPort = 1;
-	// public static int rangefinderModule = 1;
+	private final static int REAR_RIGHT_DRIVE_PWM = 0;
+	private final static int REAR_LEFT_DRIVE_PWM = 1;
+	private final static int FRONT_RIGHT_DRIVE_PWM = 2;
+	private final static int FRONT_LEFT_DRIVE_PWM = 3;
+	
+	public TalonSRX rearRightDrive;
+	public TalonSRX rearLeftDrive;
+	public TalonSRX frontRightDrive;
+	public TalonSRX frontLeftDrive;
+	
+	public void init() {
+		initDriveMotors();
+	}
+	public void initDriveMotors() {
+		rearRightDrive = new TalonSRX(REAR_RIGHT_DRIVE_PWM);
+		rearLeftDrive = new TalonSRX(REAR_LEFT_DRIVE_PWM);
+		frontRightDrive = new TalonSRX(FRONT_RIGHT_DRIVE_PWM);
+		frontLeftDrive = new TalonSRX(FRONT_LEFT_DRIVE_PWM);
+		
+		rearRightDrive.setInverted(true);
+		frontRightDrive.setInverted(true);
+	}
 }

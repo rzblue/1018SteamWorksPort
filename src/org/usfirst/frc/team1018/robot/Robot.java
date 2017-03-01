@@ -2,6 +2,7 @@
 package org.usfirst.frc.team1018.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -19,12 +20,15 @@ import org.usfirst.frc.team1018.robot.subsystems.ExampleSubsystem;
  * directory.
  */
 public class Robot extends IterativeRobot {
-
-	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
+	public static RobotMap map;
+	public static RobotDrive robot; 
 	public static OI oi;
+	
 
+	
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
+	
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -32,6 +36,8 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
+		map = new RobotMap();
+		robot = new RobotDrive(map.frontLeftDrive, map.frontRightDrive, map.rearLeftDrive, map.rearRightDrive);
 		oi = new OI();
 		chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
@@ -103,6 +109,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
+		robot.mecanumDrive_Cartesian(oi.leftStick.getX(), oi.leftStick.getY(), oi.rightStick.getX(), 0);
 		Scheduler.getInstance().run();
 	}
 
