@@ -15,7 +15,7 @@ public class OI {
 	private static int RIGHT_JOYSTICK_PORT = 1;
 	
 	public Joystick leftStick;
-	//public Joystick rightStick;
+	public Joystick rightStick;
 	
 	JoystickButton climbUpButton;
 	JoystickButton climbDownButton;
@@ -31,7 +31,7 @@ public class OI {
 	}
 	public void initSticks() {
 		leftStick = new Joystick(LEFT_JOYSTICK_PORT);
-		//rightStick = new Joystick(RIGHT_JOYSTICK_PORT);
+		rightStick = new Joystick(RIGHT_JOYSTICK_PORT);
 	}
 	public void initButtons() {
 		climbUpButton = new JoystickButton(leftStick, 1);
