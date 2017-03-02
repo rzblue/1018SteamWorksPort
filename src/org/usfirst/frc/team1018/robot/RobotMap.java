@@ -13,14 +13,28 @@ public class RobotMap {
 	private final static int FRONT_RIGHT_DRIVE_PWM = 2;
 	private final static int FRONT_LEFT_DRIVE_PWM = 3;
 	
+	private final static int LOWER_CLIMBER_PWM = 5;
+	private final static int UPPER_CLIMBER_PWM = 6;
+	
 	public TalonSRX rearRightDrive;
 	public TalonSRX rearLeftDrive;
 	public TalonSRX frontRightDrive;
 	public TalonSRX frontLeftDrive;
 	
+	public TalonSRX lowerClimber;
+	public TalonSRX upperClimber;
+	
+	/**
+	 * "Put together" the robot
+	 */
 	public void init() {
 		initDriveMotors();
+		initClimber();
 	}
+	
+	/**
+	 * Initialize the drive motors
+	 */
 	public void initDriveMotors() {
 		rearRightDrive = new TalonSRX(REAR_RIGHT_DRIVE_PWM);
 		rearLeftDrive = new TalonSRX(REAR_LEFT_DRIVE_PWM);
@@ -29,5 +43,10 @@ public class RobotMap {
 		
 		rearRightDrive.setInverted(true);
 		frontRightDrive.setInverted(true);
+	}
+	public void initClimber() {
+		lowerClimber = new TalonSRX(LOWER_CLIMBER_PWM);
+		upperClimber = new TalonSRX(UPPER_CLIMBER_PWM);
+		upperClimber.setInverted(true);
 	}
 }

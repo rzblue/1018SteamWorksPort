@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team1018.robot.commands.ExampleCommand;
-import org.usfirst.frc.team1018.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team1018.robot.subsystems.Climber;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -23,6 +23,8 @@ public class Robot extends IterativeRobot {
 	public static RobotMap map;
 	public static RobotDrive robot; 
 	public static OI oi;
+	
+	public static Climber climber;
 	
 
 	
@@ -39,6 +41,8 @@ public class Robot extends IterativeRobot {
 		map = new RobotMap();
 		robot = new RobotDrive(map.frontLeftDrive, map.frontRightDrive, map.rearLeftDrive, map.rearRightDrive);
 		oi = new OI();
+		
+		climber = new Climber();
 		chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
@@ -109,7 +113,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		robot.mecanumDrive_Cartesian(oi.leftStick.getX(), oi.leftStick.getY(), oi.rightStick.getX(), 0);
+		//robot.mecanumDrive_Cartesian(oi.leftStick.getX(), oi.leftStick.getY(), oi.rightStick.getX(), 0);
 		Scheduler.getInstance().run();
 	}
 
