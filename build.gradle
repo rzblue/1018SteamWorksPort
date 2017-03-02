@@ -6,13 +6,13 @@ plugins {
 }
 
 frc {
-    team = "5333"
-    robotClass = "org.usfirst.frc.team0000.robot.Robot"
+    team = "1018"
+    robotClass = "org.usfirst.frc.team1018.robot.Robot"
 }
 
 dependencies {
     compile wpilib()
-    compile talonSrx()
+    //compile talonSrx()
     compile navx()
 }
 

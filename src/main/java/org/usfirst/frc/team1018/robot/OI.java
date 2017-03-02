@@ -7,6 +7,8 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
+ * @author firecrafty
+ *
  * This class is the glue that binds the controls on the button panel
  * to the commands and command groups that allow control of the robot.
  */

@@ -5,7 +5,7 @@ import org.usfirst.frc.team1018.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * @author firecrafty
  */
 public class ClimbUp extends Command {
 

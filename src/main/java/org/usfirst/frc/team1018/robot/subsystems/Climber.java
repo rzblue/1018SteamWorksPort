@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
- *
+ * @author firecrafty
  */
 public class Climber extends Subsystem {
 	

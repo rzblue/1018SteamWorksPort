@@ -11,8 +11,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team1018.robot.commands.ExampleCommand;
 import org.usfirst.frc.team1018.robot.subsystems.Climber;
+import org.usfirst.frc.team1018.robot.subsystems.GearHandler;
 
 /**
+ * @author firecrafty
+ *
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
  * documentation. If you change the name of this class or the package after
@@ -25,8 +28,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	
 	public static Climber climber;
-	
-
+    public static GearHandler gearHandler;
 	
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
@@ -41,7 +43,8 @@ public class Robot extends IterativeRobot {
 		map = new RobotMap();
 		robot = new RobotDrive(map.frontLeftDrive, map.frontRightDrive, map.rearLeftDrive, map.rearRightDrive);
 		oi = new OI();
-		
+
+		gearHandler = new GearHandler();
 		climber = new Climber();
 		chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
