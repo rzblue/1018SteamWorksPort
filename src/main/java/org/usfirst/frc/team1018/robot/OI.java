@@ -23,13 +23,12 @@ public class OI {
 
     public OI() {
         init();
-        climbUpButton.whileHeld(new ClimbUp());
-        climbDownButton.whileHeld(new ClimbDown());
+        assignFunctions();
     }
 
     public void init() {
         initSticks();
-        initButtons();
+        initClimber();
     }
 
     public void initSticks() {
@@ -37,8 +36,15 @@ public class OI {
         rightStick = new Joystick(RIGHT_JOYSTICK_PORT);
     }
 
-    public void initButtons() {
+    public void initClimber() {
         climbUpButton = new JoystickButton(leftStick, 1);
         climbDownButton = new JoystickButton(leftStick, 2);
+    }
+    public void initGearHandler() {
+        
+    }
+    public void assignFunctions() {
+        climbUpButton.whileHeld(new ClimbUp());
+        climbDownButton.whileHeld(new ClimbDown());
     }
 }
