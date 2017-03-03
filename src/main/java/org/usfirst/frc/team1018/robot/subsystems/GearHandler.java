@@ -1,8 +1,8 @@
 package org.usfirst.frc.team1018.robot.subsystems;
 
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.TalonSRX;
+import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team1018.robot.Robot;
 
 /**
@@ -22,7 +22,7 @@ public class GearHandler extends Subsystem {
     }
 
     public boolean isGearPositioned() {
-        return banner.get();
+        return !banner.get();
     }
 
     public void initDefaultCommand() {
