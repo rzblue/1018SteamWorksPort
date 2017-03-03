@@ -2,6 +2,8 @@ package org.usfirst.frc.team1018.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import org.usfirst.frc.team1018.robot.commands.AlignGearAuto;
+import org.usfirst.frc.team1018.robot.commands.AlignGearManual;
 import org.usfirst.frc.team1018.robot.commands.ClimbDown;
 import org.usfirst.frc.team1018.robot.commands.ClimbUp;
 
@@ -14,12 +16,19 @@ import org.usfirst.frc.team1018.robot.commands.ClimbUp;
 public class OI {
     private static int LEFT_JOYSTICK_PORT = 0;
     private static int RIGHT_JOYSTICK_PORT = 1;
+    private static int BUTTON_PANEL_PORT = 2;
+
+    private static int CLIMB_UP_NUM = 0;
+    private static int CLIMB_DOWN_NUM = 1;
+    private static int GEAR_SPIN_NUM = 2;
 
     public Joystick leftStick;
     public Joystick rightStick;
+    public Joystick buttonPanel;
 
     JoystickButton climbUpButton;
     JoystickButton climbDownButton;
+    JoystickButton gearSpinButton;
 
     public OI() {
         init();
@@ -28,25 +37,24 @@ public class OI {
 
     public void init() {
         initSticks();
-        initClimber();
+        initButtons();
     }
 
     public void initSticks() {
         leftStick = new Joystick(LEFT_JOYSTICK_PORT);
         rightStick = new Joystick(RIGHT_JOYSTICK_PORT);
+        buttonPanel = new Joystick(BUTTON_PANEL_PORT);
     }
 
-    public void initClimber() {
-        climbUpButton = new JoystickButton(leftStick, 1);
-        climbDownButton = new JoystickButton(leftStick, 2);
-    }
-
-    public void initGearHandler() {
-
+    public void initButtons() {
+        climbUpButton = new JoystickButton(buttonPanel, CLIMB_UP_NUM);
+        climbDownButton = new JoystickButton(buttonPanel, CLIMB_DOWN_NUM);
+        gearSpinButton = new JoystickButton(buttonPanel, GEAR_SPIN_NUM);
     }
 
     public void assignFunctions() {
         climbUpButton.whileHeld(new ClimbUp());
         climbDownButton.whileHeld(new ClimbDown());
+        gearSpinButton.whileHeld(new AlignGearManual());
     }
 }
