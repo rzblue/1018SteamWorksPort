@@ -1,6 +1,7 @@
 package org.usfirst.frc.team1018.robot;
 
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.TalonSRX;
 
 /**
@@ -22,6 +23,9 @@ public class RobotMap {
     private final static int LOWER_CLIMBER_PWM = 5;
     private final static int UPPER_CLIMBER_PWM = 6;
 
+    private final static int BRAKES_UP_SOLENOID_PORT = 0;
+    private final static int BRAKES_DOWN_SOLENOID_PORT = 1;
+
     public TalonSRX rearRightDrive;
     public TalonSRX rearLeftDrive;
     public TalonSRX frontRightDrive;
@@ -32,6 +36,8 @@ public class RobotMap {
 
     public TalonSRX lowerClimber;
     public TalonSRX upperClimber;
+
+    public DoubleSolenoid brakes;
 
     public RobotMap() {
         init();
@@ -44,6 +50,7 @@ public class RobotMap {
         initDriveMotors();
         initGearHandler();
         initClimber();
+        initBrakes();
     }
 
     /**
@@ -68,5 +75,9 @@ public class RobotMap {
         lowerClimber = new TalonSRX(LOWER_CLIMBER_PWM);
         upperClimber = new TalonSRX(UPPER_CLIMBER_PWM);
         upperClimber.setInverted(true);
+    }
+
+    public void initBrakes() {
+        brakes = new DoubleSolenoid(BRAKES_DOWN_SOLENOID_PORT, BRAKES_UP_SOLENOID_PORT);
     }
 }

@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import org.usfirst.frc.team1018.robot.subsystems.Brakes;
 import org.usfirst.frc.team1018.robot.subsystems.Climber;
 import org.usfirst.frc.team1018.robot.subsystems.GearHandler;
 
@@ -26,10 +27,9 @@ public class Robot extends IterativeRobot {
 
     public static GearHandler gearHandler;
     public static Climber climber;
-
+    public static Brakes brakes;
     Command autonomousCommand;
     SendableChooser<Command> chooser = new SendableChooser<>();
-
 
     /**
      * This function is run when the robot is first started up and should be
@@ -42,10 +42,12 @@ public class Robot extends IterativeRobot {
 
         gearHandler = new GearHandler();
         climber = new Climber();
+        brakes = new Brakes();
 
         // chooser.addDefault("Default Auto", new ExampleCommand());
         // chooser.addObject("My Auto", new MyAutoCommand());
         SmartDashboard.putData("Auto mode", chooser);
+
         // OI must be done last
         // If it is not and it calls commands (it will) they will pull NullPointerExceptions
         oi = new OI();
