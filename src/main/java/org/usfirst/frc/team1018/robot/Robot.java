@@ -7,7 +7,6 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import org.usfirst.frc.team1018.robot.commands.ExampleCommand;
 import org.usfirst.frc.team1018.robot.subsystems.Climber;
 import org.usfirst.frc.team1018.robot.subsystems.GearHandler;
 
@@ -44,7 +43,7 @@ public class Robot extends IterativeRobot {
         gearHandler = new GearHandler();
         climber = new Climber();
 
-        chooser.addDefault("Default Auto", new ExampleCommand());
+        // chooser.addDefault("Default Auto", new ExampleCommand());
         // chooser.addObject("My Auto", new MyAutoCommand());
         SmartDashboard.putData("Auto mode", chooser);
         // OI must be done last

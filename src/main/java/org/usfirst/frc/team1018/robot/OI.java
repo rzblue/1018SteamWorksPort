@@ -40,9 +40,11 @@ public class OI {
         climbUpButton = new JoystickButton(leftStick, 1);
         climbDownButton = new JoystickButton(leftStick, 2);
     }
+
     public void initGearHandler() {
-        
+
     }
+
     public void assignFunctions() {
         climbUpButton.whileHeld(new ClimbUp());
         climbDownButton.whileHeld(new ClimbDown());
