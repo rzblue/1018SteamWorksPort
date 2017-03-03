@@ -26,10 +26,10 @@ public class Robot extends IterativeRobot {
 	public static RobotMap map;
 	public static RobotDrive robot; 
 	public static OI oi;
-	
+
+	public static GearHandler gearHandler;
 	public static Climber climber;
-    public static GearHandler gearHandler;
-	
+
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 	
@@ -41,14 +41,16 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		map = new RobotMap();
-		robot = new RobotDrive(map.frontLeftDrive, map.frontRightDrive, map.rearLeftDrive, map.rearRightDrive);
-		oi = new OI();
 
 		gearHandler = new GearHandler();
-		climber = new Climber();
+        climber = new Climber();
+
 		chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
-		SmartDashboard.putData("Auto mode", chooser);
+        SmartDashboard.putData("Auto mode", chooser);
+
+        robot = new RobotDrive(map.frontLeftDrive, map.rearLeftDrive, map.frontRightDrive, map.rearRightDrive);
+		oi = new OI();
 	}
 
 	/**
@@ -116,7 +118,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		//robot.mecanumDrive_Cartesian(oi.leftStick.getX(), oi.leftStick.getY(), oi.rightStick.getX(), 0);
+		robot.mecanumDrive_Cartesian(oi.leftStick.getX(), oi.leftStick.getY(), oi.rightStick.getX(), 0);
 		Scheduler.getInstance().run();
 	}
 

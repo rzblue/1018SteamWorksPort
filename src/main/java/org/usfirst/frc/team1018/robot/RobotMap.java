@@ -31,7 +31,11 @@ public class RobotMap {
 	
 	public TalonSRX lowerClimber;
 	public TalonSRX upperClimber;
-	
+
+	public RobotMap() {
+		init();
+	}
+
 	/**
 	 * "Put together" the robot
 	 */

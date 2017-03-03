@@ -8,6 +8,8 @@ plugins {
 frc {
     team = "1018"
     robotClass = "org.usfirst.frc.team1018.robot.Robot"
+
+    rioIP = "10.10.19.2"
 }
 
 dependencies {
