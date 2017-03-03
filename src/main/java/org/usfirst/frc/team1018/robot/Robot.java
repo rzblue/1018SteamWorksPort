@@ -7,9 +7,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import org.usfirst.frc.team1018.robot.subsystems.Brakes;
-import org.usfirst.frc.team1018.robot.subsystems.Climber;
-import org.usfirst.frc.team1018.robot.subsystems.GearHandler;
+import org.usfirst.frc.team1018.robot.subsystems.*;
 
 /**
  * @author firecrafty
@@ -28,6 +26,8 @@ public class Robot extends IterativeRobot {
     public static GearHandler gearHandler;
     public static Climber climber;
     public static Brakes brakes;
+    public static DriveTrain driveTrain;
+
     Command autonomousCommand;
     SendableChooser<Command> chooser = new SendableChooser<>();
 
@@ -38,8 +38,9 @@ public class Robot extends IterativeRobot {
     @Override
     public void robotInit() {
         map = new RobotMap();
-        robot = new RobotDrive(map.frontLeftDrive, map.rearLeftDrive, map.frontRightDrive, map.rearRightDrive);
 
+        driveTrain = new DriveTrain();
+        
         gearHandler = new GearHandler();
         climber = new Climber();
         brakes = new Brakes();
@@ -118,7 +119,6 @@ public class Robot extends IterativeRobot {
      */
     @Override
     public void teleopPeriodic() {
-        robot.mecanumDrive_Cartesian(oi.leftStick.getX(), oi.leftStick.getY(), oi.rightStick.getX(), 0);
         Scheduler.getInstance().run();
     }
 

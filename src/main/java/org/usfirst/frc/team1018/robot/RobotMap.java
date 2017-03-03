@@ -1,8 +1,6 @@
 package org.usfirst.frc.team1018.robot;
 
-import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.TalonSRX;
+import edu.wpi.first.wpilibj.*;
 
 /**
  * @author firecrafty
@@ -30,6 +28,7 @@ public class RobotMap {
     public TalonSRX rearLeftDrive;
     public TalonSRX frontRightDrive;
     public TalonSRX frontLeftDrive;
+    public RobotDrive driveTrain;
 
     public TalonSRX flipper;
     public DigitalInput banner;
@@ -61,9 +60,10 @@ public class RobotMap {
         rearLeftDrive = new TalonSRX(REAR_LEFT_DRIVE_PWM);
         frontRightDrive = new TalonSRX(FRONT_RIGHT_DRIVE_PWM);
         frontLeftDrive = new TalonSRX(FRONT_LEFT_DRIVE_PWM);
-
         rearRightDrive.setInverted(true);
         frontRightDrive.setInverted(true);
+        driveTrain = new RobotDrive(frontLeftDrive, rearLeftDrive, frontRightDrive, rearRightDrive);
+
     }
 
     public void initGearHandler() {
