@@ -24,6 +24,11 @@ public class RobotMap {
     private final static int BRAKES_UP_SOLENOID_PORT = 0;
     private final static int BRAKES_DOWN_SOLENOID_PORT = 1;
 
+    private final static int RIGHT_ULTRASONIC_PING_DIO = 0;
+    private final static int RIGHT_ULTRASONIC_ECHO_DIO = 1;
+    private final static int LEFT_ULTRASONIC_PING_DIO = 2;
+    private final static int LEFT_ULTRASONIC_ECHO_DIO = 3;
+
     public TalonSRX rearRightDrive;
     public TalonSRX rearLeftDrive;
     public TalonSRX frontRightDrive;
@@ -38,6 +43,9 @@ public class RobotMap {
 
     public DoubleSolenoid brakes;
 
+    public Ultrasonic rightUltrasonic;
+    public Ultrasonic leftUltrasonic;
+
     public RobotMap() {
         init();
     }
@@ -50,6 +58,7 @@ public class RobotMap {
         initGearHandler();
         initClimber();
         initBrakes();
+        initVision();
     }
 
     /**
@@ -79,5 +88,10 @@ public class RobotMap {
 
     public void initBrakes() {
         brakes = new DoubleSolenoid(BRAKES_DOWN_SOLENOID_PORT, BRAKES_UP_SOLENOID_PORT);
+    }
+
+    public void initVision() {
+        rightUltrasonic = new Ultrasonic(RIGHT_ULTRASONIC_PING_DIO, RIGHT_ULTRASONIC_ECHO_DIO, Ultrasonic.Unit.kInches);
+        leftUltrasonic = new Ultrasonic(LEFT_ULTRASONIC_PING_DIO, LEFT_ULTRASONIC_ECHO_DIO, Ultrasonic.Unit.kInches);
     }
 }
