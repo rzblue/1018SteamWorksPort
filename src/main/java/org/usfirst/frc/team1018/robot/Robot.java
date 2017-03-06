@@ -25,6 +25,7 @@ public class Robot extends IterativeRobot {
 
     //Subassemblies
     public static GearHandler gearHandler;
+    public static PegAligner pegAligner;
     public static Climber climber;
     public static Brakes brakes;
     public static DriveTrain driveTrain;
@@ -43,6 +44,7 @@ public class Robot extends IterativeRobot {
         driveTrain = new DriveTrain();
 
         gearHandler = new GearHandler();
+        pegAligner = new PegAligner();
         climber = new Climber();
         brakes = new Brakes();
 

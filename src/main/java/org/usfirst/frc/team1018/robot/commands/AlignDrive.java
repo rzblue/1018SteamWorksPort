@@ -1,4 +1,4 @@
-package org.usfirst.frc.team1018.robot.subsystems;
+package org.usfirst.frc.team1018.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team1018.robot.Robot;
@@ -9,6 +9,7 @@ import org.usfirst.frc.team1018.robot.Robot;
 public class AlignDrive extends Command {
     public AlignDrive() {
         requires(Robot.driveTrain);
+        requires(Robot.pegAligner);
     }
 
     // Called just before this Command runs the first time
