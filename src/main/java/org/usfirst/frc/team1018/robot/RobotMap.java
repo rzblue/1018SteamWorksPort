@@ -44,7 +44,7 @@ public class RobotMap {
     }
 
     /**
-     * "Put together" the robot
+     * "Puts together" the robot
      */
     public void init() {
         initDriveMotors();
@@ -54,7 +54,7 @@ public class RobotMap {
     }
 
     /**
-     * Initialize the drive motors
+     * Initializes the drive motors
      */
     public void initDriveMotors() {
         rearRightDrive = new TalonSRX(REAR_RIGHT_DRIVE_PWM);
@@ -67,17 +67,26 @@ public class RobotMap {
 
     }
 
+    /**
+     * Initializes the inputs and outputs for the gear handling system
+     */
     public void initGearHandler() {
         flipper = new TalonSRX(FLIPPER_PWM);
         banner = new DigitalInput(BANNER_DIO);
     }
 
+    /**
+     * Initializes and sets up the outputs for the climbing system
+     */
     public void initClimber() {
         lowerClimber = new TalonSRX(LOWER_CLIMBER_PWM);
         upperClimber = new TalonSRX(UPPER_CLIMBER_PWM);
         upperClimber.setInverted(true);
     }
 
+    /**
+     * Initializes the outputs for the brake system
+     */
     public void initBrakes() {
         brakes = new DoubleSolenoid(BRAKES_DOWN_SOLENOID_PORT, BRAKES_UP_SOLENOID_PORT);
     }
