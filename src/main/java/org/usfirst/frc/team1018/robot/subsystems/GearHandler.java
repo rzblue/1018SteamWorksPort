@@ -8,7 +8,12 @@ import org.usfirst.frc.team1018.robot.commands.AlignGearAuto;
 
 /**
  * @author firecrafty
+ *         <p>
+ *         Subsystem methods class for the gear handler mechanism
+ *         <p>
+ *         Contains methods to control the gear alignment (flipper) mechanism on the front of the robot
  */
+
 public class GearHandler extends Subsystem {
 
     private TalonSRX flipper = Robot.map.flipper;

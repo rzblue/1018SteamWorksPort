@@ -6,6 +6,11 @@ import org.usfirst.frc.team1018.robot.Robot;
 
 /**
  * @author firecrafty
+ *         <p>
+ *         Subsystem methods class for the braking mechanism
+ *         <p>
+ *         Contains methods to control the pneumatic "outriggers" that prevent the robot from spinning out after a
+ *         potential robot collison during peg alignment
  */
 public class Brakes extends Subsystem {
 

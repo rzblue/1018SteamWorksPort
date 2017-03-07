@@ -11,12 +11,11 @@ import org.usfirst.frc.team1018.robot.subsystems.*;
 
 /**
  * @author firecrafty
- *         <p>
- *         The VM is configured to automatically run this class, and to call the
- *         functions corresponding to each mode, as described in the IterativeRobot
- *         documentation. If you change the name of this class or the package after
- *         creating this project, you must also update the manifest file in the resource
- *         directory.
+ * @since 0.1.0
+ * <p>
+ * The VM is configured to automatically run this class, and to call the functions corresponding to each mode, as
+ * described in the IterativeRobot documentation. If you change the name of this class or the package after creating
+ * this project, you must also update the manifest file in the resource directory.
  */
 public class Robot extends IterativeRobot {
     public static RobotMap map;
@@ -40,7 +39,7 @@ public class Robot extends IterativeRobot {
         map = new RobotMap();
 
         driveTrain = new DriveTrain();
-        
+
         gearHandler = new GearHandler();
         climber = new Climber();
         brakes = new Brakes();

@@ -6,9 +6,10 @@ import org.usfirst.frc.team1018.robot.commands.*;
 
 /**
  * @author firecrafty
- *         <p>
- *         This class is the glue that binds the controls on the button panel
- *         to the commands and command groups that allow control of the robot.
+ * @since 0.1.0
+ * <p>
+ * This class is the glue that binds the controls on the button panel to the commands and command groups that allow
+ * control of the robot.
  */
 public class OI {
     private static int LEFT_JOYSTICK_PORT = 0;
