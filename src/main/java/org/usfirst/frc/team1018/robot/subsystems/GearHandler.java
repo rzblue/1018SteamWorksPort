@@ -19,21 +19,34 @@ public class GearHandler extends Subsystem {
     private TalonSRX flipper = Robot.map.flipper;
     private DigitalInput banner = Robot.map.banner;
 
+    /**
+     * Starts the flipper motor spinning
+     */
     public void spinFlipper() {
         flipper.set(-1);
     }
 
+    /**
+     * Stops the flipper motor
+     */
     public void stopFlipper() {
         flipper.set(0);
     }
 
+    /**
+     * Returns <code>true</code> if the gear is positioned correctly in the gear handler
+     *
+     * @return <code>true</code> if the gear is positioned correctly;
+     * <code>false</code> otherwise
+     */
     public boolean isGearPositioned() {
         return !banner.get();
     }
 
+    /**
+     * Sets the default command for the <code>GearHandler</code> subsystem to <code>AlignGearAuto</code>
+     */
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
         setDefaultCommand(new AlignGearAuto());
     }
 }
