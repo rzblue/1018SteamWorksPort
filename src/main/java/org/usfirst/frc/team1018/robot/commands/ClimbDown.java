@@ -5,6 +5,7 @@ import org.usfirst.frc.team1018.robot.Robot;
 
 /**
  * @author firecrafty
+ * @since 1.0
  */
 public class ClimbDown extends Command {
 

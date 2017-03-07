@@ -8,6 +8,7 @@ import org.usfirst.frc.team1018.robot.commands.AlignGearAuto;
 
 /**
  * @author firecrafty
+ * @since 1.0
  *         <p>
  *         Subsystem methods class for the gear handler mechanism
  *         <p>
