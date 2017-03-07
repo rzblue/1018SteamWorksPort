@@ -6,7 +6,9 @@ import org.usfirst.frc.team1018.robot.Robot;
 
 /**
  * @author firecrafty
- * @since 0.1.0 Subsystem methods class for the climber mechanism
+ * @since 0.1.0
+ * <p>
+ * Subsystem methods class for the climber mechanism
  * <p>
  * Contains methods to control the barrel type rope climber mechanism on board the robotd
  */
