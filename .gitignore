@@ -4,3 +4,6 @@
 .gradle
 .idea
 !gradle-wrapper.jar
+.classpath
+.project
+/.settings/

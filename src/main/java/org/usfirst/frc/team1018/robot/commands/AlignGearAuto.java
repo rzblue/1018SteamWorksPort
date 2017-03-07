@@ -7,29 +7,29 @@ import org.usfirst.frc.team1018.robot.Robot;
  * @author firecrafty
  * @since 1.0
  */
-public class ClimbDown extends Command {
-
-    public ClimbDown() {
-        requires(Robot.climber);
+public class AlignGearAuto extends Command {
+    public AlignGearAuto() {
+        requires(Robot.gearHandler);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        Robot.climber.climbDown();
+        Robot.gearHandler.spinFlipper();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return Robot.gearHandler.isGearPositioned();
     }
 
-    // Called once after isFinished returns true
+    // Called once after isFinished() returns true
     protected void end() {
-        Robot.climber.stopClimb();
+        Robot.gearHandler.stopFlipper();
     }
 
     // Called when another command which requires one or more of the same

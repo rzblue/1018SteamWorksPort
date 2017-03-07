@@ -1,11 +1,11 @@
 package org.usfirst.frc.team1018.robot.commands;
 
+import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team1018.robot.Robot;
 
-import edu.wpi.first.wpilibj.command.Command;
-
 /**
- *
+ * @author firecrafty
+ * @since 1.0
  */
 public class ClimbUp extends Command {
 
@@ -19,7 +19,7 @@ public class ClimbUp extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.climber.climbUp();
+        Robot.climber.climbUp();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -29,12 +29,12 @@ public class ClimbUp extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.climber.stopClimb();
+        Robot.climber.stopClimb();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	Robot.climber.stopClimb();
+        end();
     }
 }

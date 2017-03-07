@@ -7,10 +7,9 @@ import org.usfirst.frc.team1018.robot.Robot;
  * @author firecrafty
  * @since 1.0
  */
-public class ClimbDown extends Command {
-
-    public ClimbDown() {
-        requires(Robot.climber);
+public class BrakesUp extends Command {
+    public BrakesUp() {
+        requires(Robot.brakes);
     }
 
     // Called just before this Command runs the first time
@@ -19,7 +18,7 @@ public class ClimbDown extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        Robot.climber.climbDown();
+        Robot.brakes.brakesUp();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -27,13 +26,12 @@ public class ClimbDown extends Command {
         return false;
     }
 
-    // Called once after isFinished returns true
+    // Called once after isFinished() returns true
     protected void end() {
-        Robot.climber.stopClimb();
+
     }
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
+    // Called when another command which requires one or more of the same subsystems is scheduled to run
     protected void interrupted() {
         end();
     }
