@@ -35,17 +35,26 @@ public class OI {
         assignFunctions();
     }
 
+    /**
+     * Initializes the joysticks and buttons in the correct order
+     */
     public void init() {
         initSticks();
         initButtons();
     }
 
+    /**
+     * Initializes the joysticks and the button panel
+     */
     public void initSticks() {
         leftStick = new Joystick(LEFT_JOYSTICK_PORT);
         rightStick = new Joystick(RIGHT_JOYSTICK_PORT);
         buttonPanel = new Joystick(BUTTON_PANEL_PORT);
     }
 
+    /**
+     * Initializes the buttons on the joysticks and button panel
+     */
     public void initButtons() {
         climbUpButton = new JoystickButton(buttonPanel, CLIMB_UP_NUM);
         climbDownButton = new JoystickButton(buttonPanel, CLIMB_DOWN_NUM);
@@ -53,6 +62,9 @@ public class OI {
         brakesDownButton = new JoystickButton(buttonPanel, BRAKES_DOWN_NUM);
     }
 
+    /**
+     * Binds the commands to their respective buttons
+     */
     public void assignFunctions() {
         climbUpButton.whileHeld(new ClimbUp());
         climbDownButton.whileHeld(new ClimbDown());
