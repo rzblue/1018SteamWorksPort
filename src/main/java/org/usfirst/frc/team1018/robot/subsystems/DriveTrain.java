@@ -7,10 +7,11 @@ import org.usfirst.frc.team1018.robot.commands.Drive;
 
 /**
  * @author firecrafty
- *         <p>
- *         Subsystem methods class for the drivetrain
- *         <p>
- *         Contains methods to control the robot's mecanum style drivetrain
+ * @since 1.0
+ * <p>
+ * Subsystem methods class for the drivetrain
+ * <p>
+ * Contains methods to control the robot's mecanum style drivetrain
  */
 public class DriveTrain extends Subsystem {
     /**
