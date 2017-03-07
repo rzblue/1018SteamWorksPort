@@ -18,10 +18,12 @@ import org.usfirst.frc.team1018.robot.subsystems.*;
  * this project, you must also update the manifest file in the resource directory.
  */
 public class Robot extends IterativeRobot {
+    //Robot framework
     public static RobotMap map;
     public static RobotDrive robot;
     public static OI oi;
 
+    //Subassemblies
     public static GearHandler gearHandler;
     public static Climber climber;
     public static Brakes brakes;
