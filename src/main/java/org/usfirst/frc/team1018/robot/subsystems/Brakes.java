@@ -16,10 +16,16 @@ public class Brakes extends Subsystem {
 
     private DoubleSolenoid brakes = Robot.map.brakes;
 
+    /**
+     * Extends the brake "outriggers"
+     */
     public void brakesDown() {
         brakes.set(DoubleSolenoid.Value.kForward);
     }
 
+    /**
+     * Retracts the brake "outriggers"
+     */
     public void brakesUp() {
         brakes.set(DoubleSolenoid.Value.kReverse);
     }
