@@ -3,6 +3,7 @@ package org.usfirst.frc.team1018.robot.subsystems;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team1018.robot.Robot;
+import org.usfirst.frc.team1018.robot.commands.BrakesUp;
 
 /**
  * @author firecrafty
@@ -30,9 +31,12 @@ public class Brakes extends Subsystem {
         brakes.set(DoubleSolenoid.Value.kReverse);
     }
 
+    /**
+     * Sets the default command to the <code>BrakesUp</code> command so that the brakes are retracted when the robot
+     * starts up
+     */
     public void initDefaultCommand() {
-        // Set the default command, if any, for a subsystem here. Example:
-        //    setDefaultCommand(new MySpecialCommand());
+        setDefaultCommand(new BrakesUp());
     }
 }
 
