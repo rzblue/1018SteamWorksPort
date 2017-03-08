@@ -11,18 +11,19 @@ import org.usfirst.frc.team1018.robot.subsystems.*;
 
 /**
  * @author firecrafty
- *         <p>
- *         The VM is configured to automatically run this class, and to call the
- *         functions corresponding to each mode, as described in the IterativeRobot
- *         documentation. If you change the name of this class or the package after
- *         creating this project, you must also update the manifest file in the resource
- *         directory.
+ * @since 0.1.0
+ * <p>
+ * The VM is configured to automatically run this class, and to call the functions corresponding to each mode, as
+ * described in the IterativeRobot documentation. If you change the name of this class or the package after creating
+ * this project, you must also update the manifest file in the resource directory.
  */
 public class Robot extends IterativeRobot {
+    //Robot framework
     public static RobotMap map;
     public static RobotDrive robot;
     public static OI oi;
 
+    //Subassemblies
     public static GearHandler gearHandler;
     public static PegAligner pegAligner;
     public static Climber climber;
@@ -41,7 +42,7 @@ public class Robot extends IterativeRobot {
         map = new RobotMap();
 
         driveTrain = new DriveTrain();
-        
+
         gearHandler = new GearHandler();
         pegAligner = new PegAligner();
         climber = new Climber();
@@ -75,7 +76,7 @@ public class Robot extends IterativeRobot {
      * <p>
      * You can add additional auto modes by adding additional commands to the
      * chooser code above (like the commented example) or additional comparisons
-     * to the switch structure below with additional strings & commands.
+     * to the switch structure below with additional strings &amp; commands.
      */
     @Override
     public void autonomousInit() {
