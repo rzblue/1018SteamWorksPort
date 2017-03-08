@@ -9,9 +9,10 @@ import org.usfirst.frc.team1018.robot.Robot;
  */
 public class PegAligner extends Subsystem {
 
+    private static double[] previousRightValues = new double[20];
+    private static double[] previousLeftValues = new double[20];
     private static Ultrasonic rightUltrasonic = Robot.map.rightUltrasonic;
     private static Ultrasonic leftUltrasonic = Robot.map.leftUltrasonic;
-
     /**
      * Determines whether x falls within a range specified by the upper limit and lower limit inputs and coerces the value to fall within the range.
      *
@@ -90,7 +91,12 @@ public class PegAligner extends Subsystem {
     public double calculateBlendedRotation(double joyRotationIn, double visionRotation) {
         return weighRotationCorrection(visionRotation) + joyRotationIn;
     }
-
+    public double getLeftUltrasonicRange() {
+        return leftUltrasonic.getRangeInches();
+    }
+    public double getRightUltrasonicRange() {
+        return rightUltrasonic.getRangeInches();
+    }
     public void initDefaultCommand() {
         // Set the default command, if any, for a subsystem here. Example:
         //    setDefaultCommand(new MySpecialCommand());

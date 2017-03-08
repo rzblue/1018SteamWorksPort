@@ -11,6 +11,7 @@ public class DriveAuto extends Command {
     public DriveAuto(String startingPosition) {
         this.startingPosition = startingPosition;
         requires(Robot.driveTrain);
+        requires(Robot.pegAligner);
     }
 
     // Called just before this Command runs the first time
