@@ -7,18 +7,34 @@ import org.usfirst.frc.team1018.robot.Robot;
  * @author firecrafty
  */
 public class DriveAuto extends Command {
-    public DriveAuto() {
+    private
+    private static String startingPosition = "";
+    public DriveAuto(String startingPosition) {
+        this.startingPosition = startingPosition;
         requires(Robot.driveTrain);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-
+        if(Robot.map.leftUltrasonic.getRangeInches() > 30 && Robot.map.rightUltrasonic.getRangeInches() > 30) {
+            Robot.driveTrain.drive(0.3, 0.0,0);
+        } else {
+            switch(startingPosition) {
+                case "LEFT":
+                    Robot.driveTrain.drive(0, -0.3, 0);
+                    break;
+                case "CENTER":
+                    Robot.driveTrain.drive(0, -0.3, 0);
+                    break;
+                case "RIGHT":
+                    Robot.driveTrain.drive(0, 0.3, 0);
+                    break;
+            }
+        }
     }
 
     // Make this return true when this Command no longer needs to run execute()

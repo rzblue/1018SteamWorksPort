@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import org.usfirst.frc.team1018.robot.commands.DriveAuto;
 import org.usfirst.frc.team1018.robot.subsystems.*;
 
 /**
@@ -31,7 +32,7 @@ public class Robot extends IterativeRobot {
     public static DriveTrain driveTrain;
 
     Command autonomousCommand;
-    SendableChooser<Command> chooser = new SendableChooser<>();
+    SendableChooser<String> chooser = new SendableChooser<>();
 
     /**
      * This function is run when the robot is first started up and should be
@@ -48,9 +49,10 @@ public class Robot extends IterativeRobot {
         climber = new Climber();
         brakes = new Brakes();
 
-        // chooser.addDefault("Default Auto", new ExampleCommand());
-        // chooser.addObject("My Auto", new MyAutoCommand());
-        SmartDashboard.putData("Auto mode", chooser);
+        chooser.addObject("Left", "LEFT");
+        chooser.addDefault("Center", "CENTER");
+        chooser.addDefault("Right", "RIGHT");
+        SmartDashboard.putData("Starting Position", chooser);
 
         // OI must be done last
         // If it is not and it calls commands (it will) they will pull NullPointerExceptions
@@ -68,6 +70,14 @@ public class Robot extends IterativeRobot {
     }
 
     /**
+     * This function is called periodically during disabled
+     */
+    @Override
+    public void disabledPeriodic() {
+        Scheduler.getInstance().run();
+    }
+
+    /**
      * This autonomous (along with the chooser code above) shows how to select
      * between different autonomous modes using the dashboard. The sendable
      * chooser code works with the Java SmartDashboard. If you prefer the
@@ -80,7 +90,7 @@ public class Robot extends IterativeRobot {
      */
     @Override
     public void autonomousInit() {
-        autonomousCommand = chooser.getSelected();
+        autonomousCommand = new DriveAuto(chooser.getSelected());
 
 		/*
          * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -94,6 +104,14 @@ public class Robot extends IterativeRobot {
             autonomousCommand.start();
     }
 
+    /**
+     * This function is called periodically during autonomous
+     */
+    @Override
+    public void autonomousPeriodic() {
+        Scheduler.getInstance().run();
+    }
+
     @Override
     public void teleopInit() {
         // This makes sure that the autonomous stops running when
@@ -102,19 +120,6 @@ public class Robot extends IterativeRobot {
         // this line or comment it out.
         if(autonomousCommand != null)
             autonomousCommand.cancel();
-    }
-
-    @Override
-    public void disabledPeriodic() {
-        Scheduler.getInstance().run();
-    }
-
-    /**
-     * This function is called periodically during autonomous
-     */
-    @Override
-    public void autonomousPeriodic() {
-        Scheduler.getInstance().run();
     }
 
     /**
