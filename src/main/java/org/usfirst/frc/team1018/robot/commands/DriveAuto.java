@@ -7,7 +7,6 @@ import org.usfirst.frc.team1018.robot.Robot;
  * @author firecrafty
  */
 public class DriveAuto extends Command {
-    private
     private static String startingPosition = "";
     public DriveAuto(String startingPosition) {
         this.startingPosition = startingPosition;
