@@ -6,8 +6,8 @@ import org.usfirst.frc.team1018.robot.Robot;
 /**
  * @author firecrafty
  */
-public class AlignDrive extends Command {
-    public AlignDrive() {
+public class DriveAlign extends Command {
+    public DriveAlign() {
         requires(Robot.driveTrain);
         requires(Robot.pegAligner);
     }
