@@ -16,14 +16,14 @@ public class OI {
     private static int RIGHT_JOYSTICK_PORT = 1;
     private static int BUTTON_PANEL_PORT = 2;
 
-    private static int CLIMB_UP_NUM = 0;
-    private static int CLIMB_DOWN_NUM = 1;
-    private static int GEAR_SPIN_NUM = 2;
-    private static int BRAKES_DOWN_NUM = 3;
+    private static int CLIMB_UP_NUM = 1;
+    private static int CLIMB_DOWN_NUM = 2;
+    private static int GEAR_SPIN_NUM = 3;
+    private static int BRAKES_DOWN_NUM = 4;
 
     public Joystick leftStick;
-    public Joystick rightStick;
-    public Joystick buttonPanel;
+    //public Joystick rightStick;
+    //public Joystick buttonPanel;
 
     JoystickButton climbUpButton;
     JoystickButton climbDownButton;
@@ -48,18 +48,18 @@ public class OI {
      */
     public void initSticks() {
         leftStick = new Joystick(LEFT_JOYSTICK_PORT);
-        rightStick = new Joystick(RIGHT_JOYSTICK_PORT);
-        buttonPanel = new Joystick(BUTTON_PANEL_PORT);
+        //rightStick = new Joystick(RIGHT_JOYSTICK_PORT);
+        //buttonPanel = new Joystick(BUTTON_PANEL_PORT);
     }
 
     /**
      * Initializes the buttons on the joysticks and button panel
      */
     public void initButtons() {
-        climbUpButton = new JoystickButton(buttonPanel, CLIMB_UP_NUM);
-        climbDownButton = new JoystickButton(buttonPanel, CLIMB_DOWN_NUM);
-        gearSpinButton = new JoystickButton(buttonPanel, GEAR_SPIN_NUM);
-        brakesDownButton = new JoystickButton(buttonPanel, BRAKES_DOWN_NUM);
+        climbUpButton = new JoystickButton(leftStick, CLIMB_UP_NUM);
+        climbDownButton = new JoystickButton(leftStick, CLIMB_DOWN_NUM);
+        gearSpinButton = new JoystickButton(leftStick, GEAR_SPIN_NUM);
+        brakesDownButton = new JoystickButton(leftStick, BRAKES_DOWN_NUM);
     }
 
     /**

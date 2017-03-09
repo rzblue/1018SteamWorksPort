@@ -18,7 +18,7 @@ public class DriveTrain extends Subsystem {
      * Drives the robot using the mecanum style drive train
      */
     public void drive() {
-        Robot.map.driveTrain.mecanumDrive_Cartesian(Robot.oi.leftStick.getX(), Robot.oi.leftStick.getY(), Robot.oi.rightStick.getX(), 0);
+        Robot.map.driveTrain.arcadeDrive(Robot.oi.leftStick.getX(   ), Robot.oi.leftStick.getY());
     }
 
     /**

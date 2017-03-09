@@ -25,10 +25,10 @@ public class RobotMap {
     private final static int BRAKES_UP_SOLENOID_PORT = 0;
     private final static int BRAKES_DOWN_SOLENOID_PORT = 1;
 
-    public TalonSRX rearRightDrive;
-    public TalonSRX rearLeftDrive;
-    public TalonSRX frontRightDrive;
-    public TalonSRX frontLeftDrive;
+    public Jaguar rearRightDrive;
+    public Jaguar rearLeftDrive;
+    public Jaguar frontRightDrive;
+    public Jaguar frontLeftDrive;
     public RobotDrive driveTrain;
 
     public TalonSRX flipper;
@@ -57,10 +57,10 @@ public class RobotMap {
      * Initializes the drive motors
      */
     public void initDriveMotors() {
-        rearRightDrive = new TalonSRX(REAR_RIGHT_DRIVE_PWM);
-        rearLeftDrive = new TalonSRX(REAR_LEFT_DRIVE_PWM);
-        frontRightDrive = new TalonSRX(FRONT_RIGHT_DRIVE_PWM);
-        frontLeftDrive = new TalonSRX(FRONT_LEFT_DRIVE_PWM);
+        rearRightDrive = new Jaguar(REAR_RIGHT_DRIVE_PWM);
+        rearLeftDrive = new Jaguar(REAR_LEFT_DRIVE_PWM);
+        frontRightDrive = new Jaguar(FRONT_RIGHT_DRIVE_PWM);
+        frontLeftDrive = new Jaguar(FRONT_LEFT_DRIVE_PWM);
         rearRightDrive.setInverted(true);
         frontRightDrive.setInverted(true);
         driveTrain = new RobotDrive(frontLeftDrive, rearLeftDrive, frontRightDrive, rearRightDrive);
