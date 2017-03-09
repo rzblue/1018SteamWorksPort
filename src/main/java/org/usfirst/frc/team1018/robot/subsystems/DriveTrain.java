@@ -2,8 +2,8 @@ package org.usfirst.frc.team1018.robot.subsystems;
 
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team1018.robot.Robot;
-import org.usfirst.frc.team1018.robot.RobotMap;
 import org.usfirst.frc.team1018.robot.commands.Drive;
 
 /**
