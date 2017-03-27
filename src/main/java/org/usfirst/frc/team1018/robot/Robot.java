@@ -7,6 +7,9 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import org.usfirst.frc.team1018.robot.commands.ClimbDown;
+import org.usfirst.frc.team1018.robot.commands.ClimbUp;
+import org.usfirst.frc.team1018.robot.commands.Drive;
 import org.usfirst.frc.team1018.robot.subsystems.*;
 
 /**
@@ -49,6 +52,8 @@ public class Robot extends IterativeRobot {
         // chooser.addDefault("Default Auto", new ExampleCommand());
         // chooser.addObject("My Auto", new MyAutoCommand());
         SmartDashboard.putData("Auto mode", chooser);
+        SmartDashboard.putData("ClimbUp" , new ClimbUp());
+        SmartDashboard.putData("ClimbDown", new ClimbDown());
 
         // OI must be done last
         // If it is not and it calls commands (it will) they will pull NullPointerExceptions
