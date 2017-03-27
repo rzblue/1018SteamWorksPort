@@ -8,6 +8,7 @@ import org.usfirst.frc.team1018.robot.Robot;
  */
 public class DriveAuto extends Command {
     private static String startingPosition = "";
+
     public DriveAuto(String startingPosition) {
         this.startingPosition = startingPosition;
         requires(Robot.driveTrain);
@@ -21,7 +22,7 @@ public class DriveAuto extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         if(Robot.map.leftUltrasonic.getRangeInches() > 30 && Robot.map.rightUltrasonic.getRangeInches() > 30) {
-            Robot.driveTrain.drive(0.3, 0.0,0);
+            Robot.driveTrain.drive(0.3, 0.0, 0);
         } else {
             switch(startingPosition) {
                 case "LEFT":

@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team1018.robot.Robot;
 
 /**
- * @author firecrafty
+ * @author Ryan Blue
  * @since 0.1.0
  * <p>
  * Subsystem methods class for the climber mechanism
