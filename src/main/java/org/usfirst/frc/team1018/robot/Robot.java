@@ -32,7 +32,7 @@ public class Robot extends IterativeRobot {
     public static DriveTrain driveTrain;
 
     Command autonomousCommand;
-    SendableChooser<String> chooser = new SendableChooser<>();
+    SendableChooser<Command> chooser = new SendableChooser<>();
 
     /**
      * This function is run when the robot is first started up and should be
@@ -49,9 +49,9 @@ public class Robot extends IterativeRobot {
         climber = new Climber();
         brakes = new Brakes();
 
-        chooser.addObject("Left", "LEFT");
-        chooser.addDefault("Center", "CENTER");
-        chooser.addDefault("Right", "RIGHT");
+        chooser.addObject("Left", new DriveAuto("LEFT"));
+        chooser.addDefault("Center", new DriveAuto("CENTER"));
+        chooser.addObject("Right", new DriveAuto("RIGHT"));
         SmartDashboard.putData("Starting Position", chooser);
 
         // OI must be done last
@@ -90,7 +90,7 @@ public class Robot extends IterativeRobot {
      */
     @Override
     public void autonomousInit() {
-        autonomousCommand = new DriveAuto(chooser.getSelected());
+        autonomousCommand = chooser.getSelected();
 
 		/*
          * String autoSelected = SmartDashboard.getString("Auto Selector",
