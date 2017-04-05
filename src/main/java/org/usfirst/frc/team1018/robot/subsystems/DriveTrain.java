@@ -1,13 +1,13 @@
 package org.usfirst.frc.team1018.robot.subsystems;
 
 import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team1018.robot.Robot;
 import org.usfirst.frc.team1018.robot.commands.Drive;
 
 /**
- * @author firecrafty
+ * @author Ryan Blue
  * @since 1.0
  * <p>
  * Subsystem methods class for the drivetrain

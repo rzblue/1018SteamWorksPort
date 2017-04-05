@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team1018.robot.Robot;
 
 /**
- * @author firecrafty
+ * @author Ryan Blue
  */
 public class DriveAlign extends Command {
     public DriveAlign() {

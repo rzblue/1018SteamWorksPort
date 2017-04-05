@@ -11,7 +11,7 @@ import org.usfirst.frc.team1018.robot.commands.DriveAuto;
 import org.usfirst.frc.team1018.robot.subsystems.*;
 
 /**
- * @author firecrafty
+ * @author Ryan Blue
  * @since 0.1.0
  * <p>
  * The VM is configured to automatically run this class, and to call the functions corresponding to each mode, as
@@ -70,14 +70,6 @@ public class Robot extends IterativeRobot {
     }
 
     /**
-     * This function is called periodically during disabled
-     */
-    @Override
-    public void disabledPeriodic() {
-        Scheduler.getInstance().run();
-    }
-
-    /**
      * This autonomous (along with the chooser code above) shows how to select
      * between different autonomous modes using the dashboard. The sendable
      * chooser code works with the Java SmartDashboard. If you prefer the
@@ -104,14 +96,6 @@ public class Robot extends IterativeRobot {
             autonomousCommand.start();
     }
 
-    /**
-     * This function is called periodically during autonomous
-     */
-    @Override
-    public void autonomousPeriodic() {
-        Scheduler.getInstance().run();
-    }
-
     @Override
     public void teleopInit() {
         // This makes sure that the autonomous stops running when
@@ -120,6 +104,22 @@ public class Robot extends IterativeRobot {
         // this line or comment it out.
         if(autonomousCommand != null)
             autonomousCommand.cancel();
+    }
+
+    /**
+     * This function is called periodically during disabled
+     */
+    @Override
+    public void disabledPeriodic() {
+        Scheduler.getInstance().run();
+    }
+
+    /**
+     * This function is called periodically during autonomous
+     */
+    @Override
+    public void autonomousPeriodic() {
+        Scheduler.getInstance().run();
     }
 
     /**

@@ -3,7 +3,7 @@ package org.usfirst.frc.team1018.robot;
 import edu.wpi.first.wpilibj.*;
 
 /**
- * @author firecrafty
+ * @author Ryan Blue
  * @since 0.1.0
  * <p>
  * The RobotMap is a mapping from the ports sensors and actuators are wired into to a variable name. This provides
