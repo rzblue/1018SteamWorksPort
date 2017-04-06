@@ -23,17 +23,22 @@ ext.cscoreDep = { ->
 ext.getOpenCvPlatformPackage = { ->
     if (buildType == "windows") {
         if (System.getProperty("os.arch") == "amd64") {
+            //opencv_java310.dll
             return "windows-x86_64_2015"
         } else {
+            //opencv_java310.dll
             return "windows-x86_2015"
         }
     } else if (buildType == "linux") {
         if (System.getProperty("os.arch") == "amd64") {
+            //libopencv_java310.so
             return "linux-x86_64"
         } else {
+            //NOT SUPPORTED
             return "linux-x86"
         }
     } else if (buildType == "armhf") {
+        //libopencv_java310.so
         return "linux-armhf"
     } else if (buildType == "arm-raspbian") {
         return "linux-arm-raspbian"
