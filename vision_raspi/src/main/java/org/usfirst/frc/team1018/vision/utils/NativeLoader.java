@@ -16,9 +16,8 @@ public class NativeLoader {
     private NativeLoader() {}
 
     public static void loadDependencies() throws UnsupportedOperationException, IOException {
-        if(true) {
+        if(getOpenCvLibraryFile() == null) {
             throw new UnsupportedOperationException("Build type \"" + getOpenCvPackageFromManifest() + "\" not supported.");
-
         }
         NativeUtils.loadLibraryFromJar("/" + getOpenCvLibraryFile());
     }
