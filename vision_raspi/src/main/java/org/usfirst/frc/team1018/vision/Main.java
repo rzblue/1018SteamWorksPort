@@ -1,28 +1,15 @@
 package org.usfirst.frc.team1018.vision;
 
-import cz.adamh.utils.NativeUtils;
 import edu.wpi.cscore.*;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import org.opencv.core.Mat;
 import org.opencv.core.Rect;
 import org.opencv.imgproc.Imgproc;
-import org.pmw.tinylog.Logger;
-import org.usfirst.frc.team1018.vision.utils.NativeLoader;
-
-import java.io.IOException;
-
 public class Main {
     public static void main(String[] args) {
 
         // Loads our OpenCV library. This MUST be included
-        try {
-            NativeLoader.loadDependencies();
-        } catch(IOException e) {
-            Logger.error("Could not find OpenCV library.");
-            System.exit(0);
-        } catch(UnsupportedOperationException e) {
-            Logger.error("Unsupported");
-        }
+        System.loadLibrary("opencv_java310");
 
         // Connect NetworkTables, and get access to the publishing table
         NetworkTable.setServerMode();
