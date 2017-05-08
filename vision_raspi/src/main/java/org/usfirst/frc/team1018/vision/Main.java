@@ -1,36 +1,28 @@
 package org.usfirst.frc.team1018.vision;
 
 import edu.wpi.cscore.*;
-import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import org.opencv.core.Mat;
 import org.opencv.core.Rect;
 import org.opencv.imgproc.Imgproc;
 public class Main {
+
+
+
     public static void main(String[] args) {
 
         // Loads our OpenCV library. This MUST be included
         System.loadLibrary("opencv_java310");
 
-        // Connect NetworkTables, and get access to the publishing table
-        NetworkTable.setServerMode();
-        // Set your team number here
-        NetworkTable.setTeam(1018);
-
-        NetworkTable.initialize();
-        // Publish values to SmartDashboard
-        NetworkTable dash = NetworkTable.getTable("SmartDashboard");
-        // This is the network port you want to stream the raw received image to
-        // By rules, this has to be between 1180 and 1190, so 1185 is a good choice
-        int streamPort = 1185;
-
-        // This stores our reference to our mjpeg server for streaming the input image
-        MjpegServer inputStream = new MjpegServer("MJPEG Server", streamPort);
+        VisionNetworkTable visionTable = VisionNetworkTable.getInstance();
 
         //Set the Camera
-        UsbCamera camera = setUsbCamera(0, inputStream);
+        UsbCamera camera = new UsbCamera("CoprocessorCamera", 0);
         // Set the resolution for our camera, since this is over USB
         camera.setResolution(640, 480);
 
+        // This stores our reference to our mjpeg server for streaming the input image
+        MjpegServer inputStream = new MjpegServer("MJPEG Server", Constants.CAM_STREAM_PORT);
+        inputStream.setSource(camera);
 
         // This creates a CvSink for us to use. This grabs images from our selected camera,
         // and will allow us to use those images in opencv
@@ -38,6 +30,7 @@ public class Main {
         imageSink.setSource(camera);
 
         CvSource imageSource = new CvSource("CV Image Source", VideoMode.PixelFormat.kMJPEG, 640, 480, 30);
+
         MjpegServer cvStream = new MjpegServer("CV Image Stream", 1186);
         cvStream.setSource(imageSource);
 
@@ -58,7 +51,8 @@ public class Main {
             if(!pipeline.findContoursOutput().isEmpty()) {
                 Rect r = Imgproc.boundingRect(pipeline.findContoursOutput().get(0));
 
-                dash.putNumber("CenterX", r.x + r.width / 2);
+                visionTable.putXCenter(r.x + r.width / 2);
+
             }
 
             // Below is where you would do your OpenCV operations on the provided image
