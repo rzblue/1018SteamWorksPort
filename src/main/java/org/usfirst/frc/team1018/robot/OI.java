@@ -2,7 +2,7 @@ package org.usfirst.frc.team1018.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import org.usfirst.frc.team1018.robot.commands.AlignGearManual;
+import org.usfirst.frc.team1018.robot.commands.RotateGearManual;
 import org.usfirst.frc.team1018.robot.commands.BrakesDown;
 import org.usfirst.frc.team1018.robot.commands.ClimbDown;
 import org.usfirst.frc.team1018.robot.commands.ClimbUp;
@@ -52,7 +52,7 @@ public class OI {
     public void assignFunctions() {
         climbUpButton.whileHeld(new ClimbUp());
         climbDownButton.whileHeld(new ClimbDown());
-        gearSpinButton.whileHeld(new AlignGearManual());
+        gearSpinButton.whileHeld(new RotateGearManual());
         brakesDownButton.whileHeld(new BrakesDown());
     }
 

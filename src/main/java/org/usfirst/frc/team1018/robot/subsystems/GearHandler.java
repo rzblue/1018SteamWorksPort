@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team1018.robot.Robot;
-import org.usfirst.frc.team1018.robot.commands.AlignGearAuto;
+import org.usfirst.frc.team1018.robot.commands.RotateGearAuto;
 
 /**
  * @author Ryan Blue
@@ -45,10 +45,10 @@ public class GearHandler extends Subsystem {
     }
 
     /**
-     * Sets the default command for the <code>GearHandler</code> subsystem to <code>AlignGearAuto</code>
+     * Sets the default command for the <code>GearHandler</code> subsystem to <code>RotateGearAuto</code>
      */
     public void initDefaultCommand() {
-        setDefaultCommand(new AlignGearAuto());
+        setDefaultCommand(new RotateGearAuto());
     }
 }
 

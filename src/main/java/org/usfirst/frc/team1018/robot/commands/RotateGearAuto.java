@@ -7,8 +7,8 @@ import org.usfirst.frc.team1018.robot.Robot;
  * @author Ryan Blue
  * @since 1.0
  */
-public class AlignGearAuto extends Command {
-    public AlignGearAuto() {
+public class RotateGearAuto extends Command {
+    public RotateGearAuto() {
         requires(Robot.gearHandler);
     }
 
