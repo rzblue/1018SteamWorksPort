@@ -1,0 +1,17 @@
+package org.usfirst.frc.team1018.robot.commands.auto.bluealliance;
+
+import edu.wpi.first.wpilibj.command.CommandGroup;
+import org.usfirst.frc.team1018.robot.commands.auto.components.DriveDistance;
+import org.usfirst.frc.team1018.robot.commands.auto.components.TurnToAngle;
+
+/**
+ * @author Ryan Blue
+ */
+public class BlueLeftPegDeadReckon extends CommandGroup {
+
+    public BlueLeftPegDeadReckon() {
+        addSequential(new DriveDistance(3));
+        addSequential(new TurnToAngle(60));
+        addSequential(new DriveDistance(3));
+    }
+}

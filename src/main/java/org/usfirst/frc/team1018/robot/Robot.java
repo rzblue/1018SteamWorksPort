@@ -25,11 +25,12 @@ public class Robot extends IterativeRobot {
     public static OI oi;
 
     //Subassemblies
+    public static DriveTrain driveTrain;
+    public static Sensors sensors;
     public static GearHandler gearHandler;
     public static PegAligner pegAligner;
     public static Climber climber;
     public static Brakes brakes;
-    public static DriveTrain driveTrain;
 
     Command autonomousCommand;
     SendableChooser<String> chooser = new SendableChooser<>();
@@ -43,6 +44,8 @@ public class Robot extends IterativeRobot {
         map = new RobotMap();
 
         driveTrain = new DriveTrain();
+
+        sensors = new Sensors();
 
         gearHandler = new GearHandler();
         pegAligner = new PegAligner();

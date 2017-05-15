@@ -22,17 +22,17 @@ public class DriveAuto extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         if(Robot.map.leftUltrasonic.getRangeInches() > 30 && Robot.map.rightUltrasonic.getRangeInches() > 30) {
-            Robot.driveTrain.drive(0.3, 0.0, 0);
+            Robot.driveTrain.driveMecanum(0.3, 0.0, 0);
         } else {
             switch(startingPosition) {
                 case "LEFT":
-                    Robot.driveTrain.drive(0, -0.3, 0);
+                    Robot.driveTrain.driveMecanum(0, -0.3, 0);
                     break;
                 case "CENTER":
-                    Robot.driveTrain.drive(0, -0.3, 0);
+                    Robot.driveTrain.driveMecanum(0, -0.3, 0);
                     break;
                 case "RIGHT":
-                    Robot.driveTrain.drive(0, 0.3, 0);
+                    Robot.driveTrain.driveMecanum(0, 0.3, 0);
                     break;
             }
         }

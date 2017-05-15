@@ -19,12 +19,18 @@ public class DriveTrain extends Subsystem {
     RobotDrive robot = Robot.map.driveTrain;
 
     /**
-     * Drives the robot using the mecanum style drive train
+     * Drives the robot using the mecanum style driveMecanum train
      */
-    public void drive(double x, double y, double rotation) {
+    public void driveMecanum(double x, double y, double rotation) {
         robot.mecanumDrive_Cartesian(x, y, rotation, 0);
     }
 
+    public void driveArcade(double moveValue, double rotateValue) {
+        robot.arcadeDrive(moveValue, rotateValue);
+    }
+    public void stopRobot() {
+        robot.stopMotor();
+    }
     /**
      * Sets the default command to the <code>Drive</code> command
      * <p>

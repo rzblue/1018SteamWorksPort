@@ -1,5 +1,6 @@
 package org.usfirst.frc.team1018.robot;
 
+import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.*;
 
 /**
@@ -30,6 +31,12 @@ public class RobotMap {
     private final static int LEFT_ULTRASONIC_PING_DIO = 2;
     private final static int LEFT_ULTRASONIC_ECHO_DIO = 3;
 
+    private final static int LEFT_ENCODER_CHANNEL_A = 4;
+    private final static int LEFT_ENCODER_CHANNEL_B = 5;
+    private final static int RIGHT_ENCODER_CHANNEL_A = 6;
+    private final static int RIGHT_ENCODER_CHANNEL_B = 7;
+
+
     public TalonSRX rearRightDrive;
     public TalonSRX rearLeftDrive;
     public TalonSRX frontRightDrive;
@@ -47,6 +54,11 @@ public class RobotMap {
     public Ultrasonic rightUltrasonic;
     public Ultrasonic leftUltrasonic;
 
+    public Encoder leftEncoder;
+    public Encoder rightEncoder;
+
+    public AHRS navX;
+
     public RobotMap() {
         init();
     }
@@ -54,18 +66,18 @@ public class RobotMap {
     /**
      * "Puts together" the robot
      */
-    public void init() {
+    private void init() {
         initDriveMotors();
         initGearHandler();
         initClimber();
         initBrakes();
-        initVision();
+        initSensors();
     }
 
     /**
-     * Initializes the drive motors
+     * Initializes the driveMecanum motors
      */
-    public void initDriveMotors() {
+    private void initDriveMotors() {
         rearRightDrive = new TalonSRX(REAR_RIGHT_DRIVE_PWM);
         rearLeftDrive = new TalonSRX(REAR_LEFT_DRIVE_PWM);
         frontRightDrive = new TalonSRX(FRONT_RIGHT_DRIVE_PWM);
@@ -79,7 +91,7 @@ public class RobotMap {
     /**
      * Initializes the inputs and outputs for the gear handling system
      */
-    public void initGearHandler() {
+    private void initGearHandler() {
         flipper = new TalonSRX(FLIPPER_PWM);
         banner = new DigitalInput(BANNER_DIO);
     }
@@ -87,7 +99,7 @@ public class RobotMap {
     /**
      * Initializes and sets up the outputs for the climbing system
      */
-    public void initClimber() {
+    private void initClimber() {
         lowerClimber = new TalonSRX(LOWER_CLIMBER_PWM);
         upperClimber = new TalonSRX(UPPER_CLIMBER_PWM);
         upperClimber.setInverted(true);
@@ -96,12 +108,23 @@ public class RobotMap {
     /**
      * Initializes the outputs for the brake system
      */
-    public void initBrakes() {
+    private void initBrakes() {
         brakes = new DoubleSolenoid(BRAKES_DOWN_SOLENOID_PORT, BRAKES_UP_SOLENOID_PORT);
     }
 
-    public void initVision() {
+    /**
+     * Initializes all the robot navigation/autonomous sensors
+     */
+    private void initSensors() {
         rightUltrasonic = new Ultrasonic(RIGHT_ULTRASONIC_PING_DIO, RIGHT_ULTRASONIC_ECHO_DIO, Ultrasonic.Unit.kInches);
         leftUltrasonic = new Ultrasonic(LEFT_ULTRASONIC_PING_DIO, LEFT_ULTRASONIC_ECHO_DIO, Ultrasonic.Unit.kInches);
+        leftEncoder = new Encoder(LEFT_ENCODER_CHANNEL_A, LEFT_ENCODER_CHANNEL_B);
+        rightEncoder = new Encoder(RIGHT_ENCODER_CHANNEL_A, RIGHT_ENCODER_CHANNEL_B);
+
+        //6 inch wheels, 256 cycles/rotation, in ft/pulse
+        leftEncoder.setDistancePerPulse(0.00613592314);
+        rightEncoder.setDistancePerPulse(0.00613592314);
+
+        navX = new AHRS(I2C.Port.kMXP);
     }
 }
