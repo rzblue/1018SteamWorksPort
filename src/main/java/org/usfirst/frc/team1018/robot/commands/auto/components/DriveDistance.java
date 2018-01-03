@@ -1,5 +1,5 @@
 package org.usfirst.frc.team1018.robot.commands.auto.components;
-import com.sun.istack.internal.NotNull;
+
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team1018.robot.Robot;
 
@@ -13,11 +13,11 @@ public class DriveDistance extends Command {
      *
      * @param distanceToDrive The distance to driveMecanum in ft
      */
-    public DriveDistance(@NotNull double distanceToDrive) {
+    public DriveDistance(double distanceToDrive) {
         requires(Robot.driveTrain);
         this.distanceToDrive = distanceToDrive;
     }
-    public DriveDistance(@NotNull double distanceToDrive, double speed) {
+    public DriveDistance(double distanceToDrive, double speed) {
         this(distanceToDrive);
         this.speed = speed;
     }

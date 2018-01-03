@@ -31,6 +31,7 @@ public class Robot extends IterativeRobot {
     public static PegAligner pegAligner;
     public static Climber climber;
     public static Brakes brakes;
+    public static Paddles paddles;
 
     Command autonomousCommand;
     SendableChooser<String> chooser = new SendableChooser<>();
@@ -51,6 +52,7 @@ public class Robot extends IterativeRobot {
         pegAligner = new PegAligner();
         climber = new Climber();
         brakes = new Brakes();
+        paddles = new Paddles();
 
         chooser.addObject("Left", "LEFT");
         chooser.addDefault("Center", "CENTER");

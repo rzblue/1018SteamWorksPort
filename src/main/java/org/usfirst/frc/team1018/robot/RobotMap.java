@@ -2,6 +2,7 @@ package org.usfirst.frc.team1018.robot;
 
 import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.*;
+import org.usfirst.frc.team1018.lib.LidarLite;
 
 /**
  * @author Ryan Blue
@@ -25,16 +26,18 @@ public class RobotMap {
 
     private final static int BRAKES_UP_SOLENOID_PORT = 0;
     private final static int BRAKES_DOWN_SOLENOID_PORT = 1;
+    public final static int PADDLES_IN_SLD = 2;
+    public final static int PADDLES_OUT_SLD = 3;
 
     private final static int RIGHT_ULTRASONIC_PING_DIO = 0;
     private final static int RIGHT_ULTRASONIC_ECHO_DIO = 1;
     private final static int LEFT_ULTRASONIC_PING_DIO = 2;
     private final static int LEFT_ULTRASONIC_ECHO_DIO = 3;
 
-    private final static int LEFT_ENCODER_CHANNEL_A = 4;
-    private final static int LEFT_ENCODER_CHANNEL_B = 5;
-    private final static int RIGHT_ENCODER_CHANNEL_A = 6;
-    private final static int RIGHT_ENCODER_CHANNEL_B = 7;
+    private final static int RIGHT_ENCODER_CHANNEL_A = 4;
+    private final static int RIGHT_ENCODER_CHANNEL_B = 5;
+    private final static int LEFT_ENCODER_CHANNEL_A = 6;
+    private final static int LEFT_ENCODER_CHANNEL_B = 7;
 
 
     public TalonSRX rearRightDrive;
@@ -51,6 +54,8 @@ public class RobotMap {
 
     public DoubleSolenoid brakes;
 
+    public DoubleSolenoid paddles;
+
     public Ultrasonic rightUltrasonic;
     public Ultrasonic leftUltrasonic;
 
@@ -58,6 +63,8 @@ public class RobotMap {
     public Encoder rightEncoder;
 
     public AHRS navX;
+
+    public LidarLite lidar;
 
     public RobotMap() {
         init();
@@ -113,6 +120,13 @@ public class RobotMap {
     }
 
     /**
+     * Initializes the paddles
+     *
+     */
+    private void initPaddles() {
+        paddles = new DoubleSolenoid(PADDLES_OUT_SLD, PADDLES_IN_SLD);
+    }
+    /**
      * Initializes all the robot navigation/autonomous sensors
      */
     private void initSensors() {
@@ -125,6 +139,8 @@ public class RobotMap {
         leftEncoder.setDistancePerPulse(0.00613592314);
         rightEncoder.setDistancePerPulse(0.00613592314);
 
-        navX = new AHRS(I2C.Port.kMXP);
+        navX = new AHRS(SPI.Port.kMXP);
+
+        lidar = new LidarLite(I2C.Port.kMXP);
     }
 }

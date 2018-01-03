@@ -32,6 +32,7 @@ public class OI {
     JoystickButton climbDownButton;
     JoystickButton gearSpinButton;
     JoystickButton brakesDownButton;
+    JoystickButton switchDriveModeButton;
 
     public OI() {
         init();
@@ -73,5 +74,6 @@ public class OI {
         climbDownButton = new JoystickButton(buttonPanel, CLIMB_DOWN_NUM);
         gearSpinButton = new JoystickButton(buttonPanel, GEAR_SPIN_NUM);
         brakesDownButton = new JoystickButton(buttonPanel, BRAKES_DOWN_NUM);
+        //switchDriveModeButton = new JoystickButton(buttonPanel,) Idk why i thought this was a good idea
     }
 }

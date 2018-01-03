@@ -3,6 +3,7 @@ package org.usfirst.frc.team1018.robot.subsystems;
 import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Ultrasonic;
+import org.usfirst.frc.team1018.lib.LidarLite;
 import org.usfirst.frc.team1018.robot.Robot;
 
 /**
@@ -18,9 +19,14 @@ public class Sensors {
 
     public AHRS navX = Robot.map.navX;
 
+    private LidarLite lidar = Robot.map.lidar;
+
     public void resetEncoders() {
         leftEncoder.reset();
         rightEncoder.reset();
+    }
+    public int getLidarDistance() {
+        return lidar.getDistanceCentimeters();
     }
 
     public double getAverageEncoderDistance() {

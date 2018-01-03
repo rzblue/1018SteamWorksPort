@@ -12,7 +12,9 @@ frc {
     rioIP = "10.10.19.2" //Eric's squarebot
     deploy = false //dev purposes
 }
-
+wpi {
+    opencvVersion = "3.1.0"
+}
 dependencies {
     compile wpilib()
     //compile talonSrx()

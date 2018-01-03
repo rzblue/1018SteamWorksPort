@@ -1,6 +1,6 @@
 package org.usfirst.frc.team1018.robot.commands.auto.components;
 
-import com.sun.istack.internal.NotNull;
+
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.command.Command;
@@ -23,7 +23,7 @@ public class TurnToAngle extends Command implements PIDOutput{
      *
      * @param angle The angle to turn to
      */
-    public TurnToAngle(@NotNull double angle) {
+    public TurnToAngle(double angle) {
         this(angle, false);
     }
 
@@ -32,7 +32,7 @@ public class TurnToAngle extends Command implements PIDOutput{
      * @param angle The angle to turn to
      * @param relativeAngle Is the angle specified relative to the current angle?
      */
-    public TurnToAngle(@NotNull double angle, boolean relativeAngle) {
+    public TurnToAngle(double angle, boolean relativeAngle) {
         requires(Robot.driveTrain);
 
         //Changes a relative angle to an exact angle
