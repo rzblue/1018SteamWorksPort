@@ -1,15 +1,13 @@
 package org.usfirst.frc.team1018.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.InstantCommand;
 import org.usfirst.frc.team1018.robot.Robot;
 
 /**
  * @author Ryan Blue
- * @since 1.0
  */
-public class Drive extends Command {
-    public Drive() {
-        requires(Robot.driveTrain);
+public class ChangeDriveMode extends InstantCommand {
+    public ChangeDriveMode() {
     }
 
     // Called just before this Command runs the first time
@@ -18,12 +16,7 @@ public class Drive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        Robot.driveTrain.driveMecanum(Robot.oi.leftStick.getX(), Robot.oi.leftStick.getY(), Robot.oi.rightStick.getY());
-    }
-
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return false;
+        Robot.driveTrain.toggleDriveMode();
     }
 
     // Called once after isFinished() returns true

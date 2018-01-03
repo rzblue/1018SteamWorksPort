@@ -5,11 +5,10 @@ import org.usfirst.frc.team1018.robot.Robot;
 
 /**
  * @author Ryan Blue
- * @since 1.0
  */
-public class Drive extends Command {
-    public Drive() {
-        requires(Robot.driveTrain);
+public class PaddlesOut extends Command {
+    public PaddlesOut() {
+        requires(Robot.paddles);
     }
 
     // Called just before this Command runs the first time
@@ -18,7 +17,7 @@ public class Drive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        Robot.driveTrain.driveMecanum(Robot.oi.leftStick.getX(), Robot.oi.leftStick.getY(), Robot.oi.rightStick.getY());
+        Robot.paddles.paddlesOut();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -28,6 +27,7 @@ public class Drive extends Command {
 
     // Called once after isFinished() returns true
     protected void end() {
+
     }
 
     // Called when another command which requires one or more of the same

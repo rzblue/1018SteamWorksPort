@@ -17,12 +17,35 @@ import org.usfirst.frc.team1018.robot.commands.Drive;
 public class DriveTrain extends Subsystem {
 
     RobotDrive robot = Robot.map.driveTrain;
+    private boolean fieldOriented = false;
 
     /**
-     * Drives the robot using the mecanum style drive train
+     * Drives the robot using the mecanum style driveMecanum train
      */
-    public void drive(double x, double y, double rotation) {
-        robot.mecanumDrive_Cartesian(x, y, rotation, 0);
+    public void driveMecanum(double x, double y, double rotation) {
+        double gyroAngle = 0;
+        if(fieldOriented) gyroAngle = Robot.sensors.navX.getYaw();
+        robot.mecanumDrive_Cartesian(x, y, rotation, gyroAngle);
+    }
+
+    public void driveArcade(double moveValue, double rotateValue) {
+        robot.arcadeDrive(moveValue, rotateValue);
+    }
+
+    public void stopRobot() {
+        robot.stopMotor();
+    }
+
+    public void toggleDriveMode() {
+        fieldOriented = !fieldOriented;
+    }
+
+    public void setFieldOriented(boolean fieldOriented) {
+        this.fieldOriented = fieldOriented;
+    }
+
+    public boolean isFieldOriented() {
+        return fieldOriented;
     }
 
     /**

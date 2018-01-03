@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import org.usfirst.frc.team1018.robot.commands.DriveAuto;
+import org.usfirst.frc.team1018.robot.commands.auto.DriveAuto;
 import org.usfirst.frc.team1018.robot.subsystems.*;
 
 /**
@@ -25,11 +25,13 @@ public class Robot extends IterativeRobot {
     public static OI oi;
 
     //Subassemblies
+    public static DriveTrain driveTrain;
+    public static Sensors sensors;
     public static GearHandler gearHandler;
     public static PegAligner pegAligner;
     public static Climber climber;
     public static Brakes brakes;
-    public static DriveTrain driveTrain;
+    public static Paddles paddles;
 
     Command autonomousCommand;
     SendableChooser<Command> chooser = new SendableChooser<>();
@@ -44,10 +46,13 @@ public class Robot extends IterativeRobot {
 
         driveTrain = new DriveTrain();
 
+        sensors = new Sensors();
+
         gearHandler = new GearHandler();
         pegAligner = new PegAligner();
         climber = new Climber();
         brakes = new Brakes();
+        paddles = new Paddles();
 
         chooser.addObject("Left", new DriveAuto("LEFT"));
         chooser.addDefault("Center", new DriveAuto("CENTER"));
