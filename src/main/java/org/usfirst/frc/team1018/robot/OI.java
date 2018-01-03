@@ -2,10 +2,13 @@ package org.usfirst.frc.team1018.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import org.usfirst.frc.team1018.robot.commands.*;
+import org.usfirst.frc.team1018.robot.commands.RotateGearManual;
+import org.usfirst.frc.team1018.robot.commands.BrakesDown;
+import org.usfirst.frc.team1018.robot.commands.ClimbDown;
+import org.usfirst.frc.team1018.robot.commands.ClimbUp;
 
 /**
- * @author firecrafty
+ * @author Ryan Blue
  * @since 0.1.0
  * <p>
  * This class is the glue that binds the controls on the button panel to the commands and command groups that allow
@@ -29,6 +32,7 @@ public class OI {
     JoystickButton climbDownButton;
     JoystickButton gearSpinButton;
     JoystickButton brakesDownButton;
+    JoystickButton switchDriveModeButton;
 
     public OI() {
         init();
@@ -41,6 +45,16 @@ public class OI {
     public void init() {
         initSticks();
         initButtons();
+    }
+
+    /**
+     * Binds the commands to their respective buttons
+     */
+    public void assignFunctions() {
+        climbUpButton.whileHeld(new ClimbUp());
+        climbDownButton.whileHeld(new ClimbDown());
+        gearSpinButton.whileHeld(new RotateGearManual());
+        brakesDownButton.whileHeld(new BrakesDown());
     }
 
     /**
@@ -60,15 +74,6 @@ public class OI {
         climbDownButton = new JoystickButton(buttonPanel, CLIMB_DOWN_NUM);
         gearSpinButton = new JoystickButton(buttonPanel, GEAR_SPIN_NUM);
         brakesDownButton = new JoystickButton(buttonPanel, BRAKES_DOWN_NUM);
-    }
-
-    /**
-     * Binds the commands to their respective buttons
-     */
-    public void assignFunctions() {
-        climbUpButton.whileHeld(new ClimbUp());
-        climbDownButton.whileHeld(new ClimbDown());
-        gearSpinButton.whileHeld(new AlignGearManual());
-        brakesDownButton.whileHeld(new BrakesDown());
+        //switchDriveModeButton = new JoystickButton(buttonPanel,) Idk why i thought this was a good idea
     }
 }

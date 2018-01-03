@@ -7,10 +7,11 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import org.usfirst.frc.team1018.robot.commands.auto.DriveAuto;
 import org.usfirst.frc.team1018.robot.subsystems.*;
 
 /**
- * @author firecrafty
+ * @author Ryan Blue
  * @since 0.1.0
  * <p>
  * The VM is configured to automatically run this class, and to call the functions corresponding to each mode, as
@@ -24,10 +25,13 @@ public class Robot extends IterativeRobot {
     public static OI oi;
 
     //Subassemblies
+    public static DriveTrain driveTrain;
+    public static Sensors sensors;
     public static GearHandler gearHandler;
+    public static PegAligner pegAligner;
     public static Climber climber;
     public static Brakes brakes;
-    public static DriveTrain driveTrain;
+    public static Paddles paddles;
 
     Command autonomousCommand;
     SendableChooser<Command> chooser = new SendableChooser<>();
@@ -42,13 +46,18 @@ public class Robot extends IterativeRobot {
 
         driveTrain = new DriveTrain();
 
+        sensors = new Sensors();
+
         gearHandler = new GearHandler();
+        pegAligner = new PegAligner();
         climber = new Climber();
         brakes = new Brakes();
+        paddles = new Paddles();
 
-        // chooser.addDefault("Default Auto", new ExampleCommand());
-        // chooser.addObject("My Auto", new MyAutoCommand());
-        SmartDashboard.putData("Auto mode", chooser);
+        chooser.addObject("Left", new DriveAuto("LEFT"));
+        chooser.addDefault("Center", new DriveAuto("CENTER"));
+        chooser.addObject("Right", new DriveAuto("RIGHT"));
+        SmartDashboard.putData("Starting Position", chooser);
 
         // OI must be done last
         // If it is not and it calls commands (it will) they will pull NullPointerExceptions
@@ -102,6 +111,9 @@ public class Robot extends IterativeRobot {
             autonomousCommand.cancel();
     }
 
+    /**
+     * This function is called periodically during disabled
+     */
     @Override
     public void disabledPeriodic() {
         Scheduler.getInstance().run();

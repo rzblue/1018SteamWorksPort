@@ -2,7 +2,7 @@ plugins {
     id "java"
     id "eclipse"
     id "idea"
-    id "jaci.openrio.gradle.GradleRIO" version "2017.1.2"
+    id "jaci.openrio.gradle.GradleRIO" version "2017.1.5"
 }
 
 frc {
@@ -12,7 +12,9 @@ frc {
     rioIP = "10.10.19.2" //Eric's squarebot
     deploy = false //dev purposes
 }
-
+wpi {
+    opencvVersion = "3.1.0"
+}
 dependencies {
     compile wpilib()
     //compile talonSrx()

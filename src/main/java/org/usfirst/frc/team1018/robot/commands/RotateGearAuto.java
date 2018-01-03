@@ -4,11 +4,11 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team1018.robot.Robot;
 
 /**
- * @author firecrafty
+ * @author Ryan Blue
  * @since 1.0
  */
-public class AlignGearManual extends Command {
-    public AlignGearManual() {
+public class RotateGearAuto extends Command {
+    public RotateGearAuto() {
         requires(Robot.gearHandler);
     }
 
@@ -24,7 +24,7 @@ public class AlignGearManual extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return Robot.gearHandler.isGearPositioned();
     }
 
     // Called once after isFinished() returns true
@@ -32,7 +32,8 @@ public class AlignGearManual extends Command {
         Robot.gearHandler.stopFlipper();
     }
 
-    // Called when another command which requires one or more of the same subsystems is scheduled to run
+    // Called when another command which requires one or more of the same
+    // subsystems is scheduled to run
     protected void interrupted() {
         end();
     }

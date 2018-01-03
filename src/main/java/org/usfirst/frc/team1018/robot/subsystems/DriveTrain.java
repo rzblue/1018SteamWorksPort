@@ -1,12 +1,13 @@
 package org.usfirst.frc.team1018.robot.subsystems;
 
+import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team1018.robot.Robot;
 import org.usfirst.frc.team1018.robot.commands.Drive;
 
 /**
- * @author firecrafty
+ * @author Ryan Blue
  * @since 1.0
  * <p>
  * Subsystem methods class for the drivetrain
@@ -14,11 +15,37 @@ import org.usfirst.frc.team1018.robot.commands.Drive;
  * Contains methods to control the robot's mecanum style drivetrain
  */
 public class DriveTrain extends Subsystem {
+
+    RobotDrive robot = Robot.map.driveTrain;
+    private boolean fieldOriented = false;
+
     /**
-     * Drives the robot using the mecanum style drive train
+     * Drives the robot using the mecanum style driveMecanum train
      */
-    public void drive() {
-        Robot.map.driveTrain.mecanumDrive_Cartesian(Robot.oi.leftStick.getX(), Robot.oi.leftStick.getY(), Robot.oi.rightStick.getX(), 0);
+    public void driveMecanum(double x, double y, double rotation) {
+        double gyroAngle = 0;
+        if(fieldOriented) gyroAngle = Robot.sensors.navX.getYaw();
+        robot.mecanumDrive_Cartesian(x, y, rotation, gyroAngle);
+    }
+
+    public void driveArcade(double moveValue, double rotateValue) {
+        robot.arcadeDrive(moveValue, rotateValue);
+    }
+
+    public void stopRobot() {
+        robot.stopMotor();
+    }
+
+    public void toggleDriveMode() {
+        fieldOriented = !fieldOriented;
+    }
+
+    public void setFieldOriented(boolean fieldOriented) {
+        this.fieldOriented = fieldOriented;
+    }
+
+    public boolean isFieldOriented() {
+        return fieldOriented;
     }
 
     /**
